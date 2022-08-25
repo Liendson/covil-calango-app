@@ -1,0 +1,20 @@
+.background {
+  background: var(--ion-color-secondary);
+  position: absolute;
+  width: 100%;
+  height: 25vh;
+  max-height: 8em;
+}
+
+h1 {
+  font-weight: bold;
+  margin-bottom: 0;
+}
+
+p {
+  margin-top: 0;
+}
+
+strong {
+  display: block;
+}

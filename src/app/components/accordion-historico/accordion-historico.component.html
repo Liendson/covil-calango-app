@@ -1,0 +1,38 @@
+<ion-accordion [value]="historico">
+  <ion-item slot="header">
+    <ion-icon name="trophy-outline"></ion-icon>
+    <ion-label>{{ historico.nome }}</ion-label>
+  </ion-item>
+  <div slot="content">
+    <div>
+      <strong>
+        <ion-icon name="trophy-outline"></ion-icon> Data
+      </strong>
+      <p>{{ historico.data }}</p>
+    </div>
+    <div>
+      <strong>
+        <ion-icon name="trophy-outline"></ion-icon> Vencedor
+      </strong>
+      <p>{{ historico.vencedor }}</p>
+    </div>
+    <div>
+      <strong>
+        <ion-icon name="home-outline"></ion-icon> Local
+      </strong>
+      <p>{{ historico.local }}</p>
+    </div>
+    <div>
+      <strong>
+        <ion-icon name="ribbon-outline"></ion-icon> Sua Posição
+      </strong>
+      <p>{{ historico.posicao }}</p>
+    </div>
+    <div>
+      <strong>
+        <ion-icon name="ribbon-outline"></ion-icon> Quantidade de Participantes
+      </strong>
+      <p>{{ historico.participantes }}</p>
+    </div>
+  </div>
+</ion-accordion>

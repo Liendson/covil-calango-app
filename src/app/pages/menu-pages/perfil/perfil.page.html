@@ -1,0 +1,31 @@
+<ygo-header-component [title]="'Perfil'"></ygo-header-component>
+<div class="background"></div>
+<ion-content>
+  <div class="background"></div>
+  <ion-grid>
+    <ion-row>
+      <ion-col size="12" class="align-center text-center pt-4">
+        <ion-avatar>
+          <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y" alt="img-user">
+        </ion-avatar>
+      </ion-col>
+      <ion-col size="12" class="text-center">
+        <strong>
+          <h1>{{ usuario.nome }}</h1>
+        </strong>
+        <p>{{ obterRankingUsuario(usuario.pontos) }} ({{ usuario.pontos }} Pontos)</p>
+      </ion-col>
+      <ion-col size="12" class="text-center pt-1">
+        <ion-button color="primary" (click)="toRoute('/meus-torneios')" expand="block"> Meus Torneios</ion-button>
+      </ion-col>
+      <ion-col size="12" class="text-center">
+        <ion-button color="primary" (click)="toRoute('/historico')" expand="block"> Histórico de Torneios</ion-button>
+      </ion-col>
+      <ion-col size="12" class="text-center pt-2">
+        <ion-button color="primary" disabled size="small">
+          <ion-icon name="exit-outline"></ion-icon> Sair
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

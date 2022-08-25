@@ -1,0 +1,54 @@
+<ygo-header-component [title]="'Meus Torneios'"></ygo-header-component>
+
+<ion-content>
+  <ion-card *ngIf="listMeusTorneios.length > 0">
+    <ion-card-header>
+      <ion-card-title>Próximos Torneios</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-accordion-group>
+        <ion-accordion *ngFor="let torneio of listMeusTorneios" [value]="torneio">
+          <ion-item slot="header">
+            <ion-icon name="trophy-outline"></ion-icon>
+            <ion-label>{{ torneio.nomeTorneio }}</ion-label>
+          </ion-item>
+          <div slot="content">
+            <div>
+              <strong>
+                <ion-icon name="home-outline"></ion-icon> Local
+              </strong>
+              <p>{{ torneio.lojaId }}</p>
+            </div>
+            <div>
+              <strong>
+                <ion-icon name="time-outline"></ion-icon> Horário
+              </strong>
+              <p>{{ torneio.dataInicio }}</p>
+            </div>
+            <div>
+              <strong>
+                <ion-icon name="cash-outline"></ion-icon> Valor
+              </strong>
+              <p>{{ torneio.valorInscricao }}</p>
+            </div>
+            <div>
+              <strong>
+                <ion-icon name="ribbon-outline"></ion-icon> Premiação
+              </strong>
+              <p>{{ torneio.tierTorneio }}</p>
+            </div>
+            <ion-button color="primary" (click)="removerInscricaoTorneio()" size="small">
+              <ion-icon name="checkmark-done-circle"></ion-icon> Desinscrever
+            </ion-button>
+          </div>
+        </ion-accordion>
+        <ygo-accordion-torneio></ygo-accordion-torneio>
+      </ion-accordion-group>
+    </ion-card-content>
+  </ion-card>
+  <ion-card *ngIf="listMeusTorneios.length == 0">
+    <ion-card-header class="text-center">
+      <ion-card-title>Você não está inscrito em nenhum torneio!</ion-card-title>
+    </ion-card-header>
+  </ion-card>
+</ion-content>

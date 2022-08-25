@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { JogadorDTO } from './model/jogador.dto';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,15 @@ import { Component } from '@angular/core';
   styleUrls: ['app.component.scss'],
 })
 export class AppComponent {
-  constructor() {}
+
+  constructor() { }
+
+  public static usuario: JogadorDTO = {
+    id: 1,
+    nome: 'Liendson',
+    pontos: 10240,
+    tcgId: '1',
+    tipoJogo: 1,
+  }
+
 }

@@ -1,0 +1,9 @@
+<ion-card [ngClass]="{'background' : color == 'default'}">
+  <ion-card-header *ngIf="label" [ngClass]="{'header' : color == 'default'}">
+    <ion-icon *ngIf="icon" [attr.name]="icon"></ion-icon>
+    <ion-card-title [ngClass]="{'header' : color == 'default'}">{{ label }}</ion-card-title>
+  </ion-card-header>
+  <ion-card-content *ngIf="content">
+    <ng-content></ng-content>
+  </ion-card-content>
+</ion-card>

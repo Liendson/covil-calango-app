@@ -1,0 +1,9 @@
+ion-header {
+  display: contents;
+  ion-toolbar {
+    border-radius: 0 0 1.5em 1.5em;
+    --background: var(--ion-color-primary);
+    text-align: center;
+    color: var(--ion-color-light);
+  }
+}

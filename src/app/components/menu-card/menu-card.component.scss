@@ -1,0 +1,23 @@
+ion-card {
+  margin: 2em;
+  &:not(.background) {
+    --background: var(--ion-color-primary);
+  }
+  ion-card-title {
+    margin-top: 0px;
+  }
+  ion-card-header {
+    &:not(.header) {
+      color: var(--ion-color-light);
+    }
+    ion-icon {
+      font-size: 3em;
+      margin: 0 2rem 0 0;
+    }
+    ion-card-title {
+      &:not(.header) {
+        color: var(--ion-color-light);
+      }
+    }
+  }
+}

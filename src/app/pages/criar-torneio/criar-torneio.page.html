@@ -1,0 +1,53 @@
+<ygo-header-component [title]="'Criar Torneio'"></ygo-header-component>
+
+<ion-content>
+  <ygo-menu-card label="Dados do Torneio" content="true" color="default">
+    <ion-item>
+      <ion-label position="floating">Nome do Torneio</ion-label>
+      <ion-input></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Numero de Rodadas</ion-label>
+      <ion-input></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Local</ion-label>
+      <ion-input></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Data/Hora</ion-label>
+      <ion-input></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Premiação</ion-label>
+      <ion-input></ion-input>
+    </ion-item>
+  </ygo-menu-card>
+
+  <ygo-menu-card label="Jogadores" content="true" color="default" *ngIf="listaDeJogadoresIncluidos.length > 0">
+    <ion-list>
+      <ion-item *ngFor="let jogador of listaDeJogadoresIncluidos; index as i">
+        <ion-label>{{ jogador.nome }}</ion-label>
+        <ion-button color="danger" size="small" (click)="removerJogador(i)">
+          <ion-icon name="close-circle-outline"></ion-icon>
+        </ion-button>
+      </ion-item>
+    </ion-list>
+  </ygo-menu-card>
+  <ion-grid>
+    <ion-row>
+      <ion-col size="12" class="center text-center pt-1">
+        <ion-button color="primary" size="small" (click)="openModal()">
+          <ion-icon name="add-outline"></ion-icon> Adicionar Jogadores
+        </ion-button>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="12" class="center text-center pt-1">
+        <ion-button color="primary" (click)="salvar()">
+          <ion-icon name="save-outline"></ion-icon> Salvar
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

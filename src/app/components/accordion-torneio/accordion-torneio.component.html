@@ -1,0 +1,35 @@
+<ion-accordion [value]="torneio">
+  <ion-item slot="header">
+    <ion-icon name="trophy-outline"></ion-icon>
+    <ion-label>{{ torneio.nome }}</ion-label>
+  </ion-item>
+  <div slot="content">
+    <div>
+      <strong>
+        <ion-icon name="home-outline"></ion-icon> Local
+      </strong>
+      <p>{{ torneio.local }}</p>
+    </div>
+    <div>
+      <strong>
+        <ion-icon name="time-outline"></ion-icon> Horário
+      </strong>
+      <p>{{ torneio.horario }}</p>
+    </div>
+    <div>
+      <strong>
+        <ion-icon name="cash-outline"></ion-icon> Valor
+      </strong>
+      <p>{{ torneio.valor }}</p>
+    </div>
+    <div>
+      <strong>
+        <ion-icon name="ribbon-outline"></ion-icon> Premiação
+      </strong>
+      <p>{{ torneio.premiacao }}</p>
+    </div>
+    <ion-button color="primary" size="small">
+      <ion-icon name="checkmark-done-circle"></ion-icon> Realizar Inscrição
+    </ion-button>
+  </div>
+</ion-accordion>

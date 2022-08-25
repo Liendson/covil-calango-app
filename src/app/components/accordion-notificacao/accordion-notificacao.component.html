@@ -1,0 +1,13 @@
+<ion-accordion [value]="notificacao">
+  <ion-item slot="header">
+    <ion-icon name="notifications-circle-outline"></ion-icon>
+    <ion-label><strong>{{ notificacao.titulo }}</strong> {{ notificacao.dataHora }}</ion-label>
+  </ion-item>
+  <div slot="content">
+    <strong>{{ notificacao.descricao }}</strong>
+    <ion-button color="primary" size="small">
+      <ion-icon name="close"></ion-icon>
+    </ion-button>
+
+  </div>
+</ion-accordion>

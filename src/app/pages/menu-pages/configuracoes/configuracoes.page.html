@@ -1,0 +1,24 @@
+<ygo-header-component [title]="'Configurações'"></ygo-header-component>
+<div class="background"></div>
+<ion-content>
+  <div class="background"></div>
+  <ion-grid>
+    <ion-row>
+      <ion-col size="12" class="align-center text-center pt-4 pb-4">
+        <img src="../../../assets/images/dark-magician-girl.png" alt="img-user">
+      </ion-col>
+      <ion-col size="12" class="text-center">
+        <ion-button color="primary" (click)="openModalPerfil()" expand="block"> Alterar Perfil</ion-button>
+      </ion-col>
+      <ion-col size="12" class="text-center">
+        <ion-button color="primary" (click)="openModalCreditos()" expand="block"> Créditos</ion-button>
+      </ion-col>
+      <ion-col size="12" class="text-center">
+        <ion-button color="primary" (click)="openModalInformacoes()" expand="block"> Informações</ion-button>
+      </ion-col>
+      <ion-col class="align-center text-center pt-4">
+        <p>Versão 1.0.0</p>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

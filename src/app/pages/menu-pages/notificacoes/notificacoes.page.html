@@ -1,0 +1,8 @@
+<ygo-header-component [title]="'Notificações'"></ygo-header-component>
+
+<ion-content>
+  <ion-accordion-group>
+    <ygo-accordion-notificacao *ngFor="let notificacao of listTodasNotificacoes" [notificacao]="notificacao">
+    </ygo-accordion-notificacao>
+  </ion-accordion-group>
+</ion-content>

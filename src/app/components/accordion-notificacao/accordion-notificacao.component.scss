@@ -1,0 +1,32 @@
+ion-accordion {
+  padding: 1em;
+  background: none;
+  ion-item {
+    border-radius: 0.4rem 0.4rem 0 0;
+    border: 1px solid var(--ion-color-medium);
+    ion-icon {
+      color: var(--ion-color-primary);
+    }
+    ion-label {
+      padding-inline-start: calc(var(--padding-start) + var(--ion-safe-area-left, 0px));
+    }
+  }
+  [slot="content"] {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    strong {
+      color: var(--ion-color-primary);
+    }
+    padding: 1rem;
+    border: 1px solid var(--ion-color-medium);
+    border-top: none;
+    border-radius: 0 0 0.4rem 0.4rem;
+    color: var(--ion-color-dark);
+  }
+}
+
+strong {
+  display: block;
+}

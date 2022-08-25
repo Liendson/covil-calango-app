@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title class="text-center">
+      <ion-icon name="person-outline"></ion-icon> Adicionar Jogador
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-toolbar>
+    <ion-searchbar (ionInput)="getItems($event)" placeholder="Pesquisar"></ion-searchbar>
+  </ion-toolbar>
+  <!-- List of Text Items -->
+  <ion-list>
+    <ion-item *ngFor="let jogador of listJogadoresFiltrados; index as i">
+      <ion-avatar>
+        <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y" alt="img-user">
+      </ion-avatar>
+      <ion-label>{{ jogador.nome }}</ion-label>
+      <ion-button color="primary" size="small" (click)="adicionarJogador(i)" *ngIf="!jogador.adicionado">
+        <ion-icon name="checkmark-done-circle"></ion-icon>
+      </ion-button>
+      <ion-button color="danger" size="small" (click)="removerJogador(i)" *ngIf="jogador.adicionado">
+        <ion-icon name="close-circle-outline"></ion-icon>
+      </ion-button>
+    </ion-item>
+  </ion-list>
+</ion-content>

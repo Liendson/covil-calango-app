@@ -1,0 +1,17 @@
+<ygo-header-component [title]="'Histórico'"></ygo-header-component>
+
+<ion-content>
+  <ion-card *ngIf="listHistoricoTorneios.length > 0">
+    <ion-card-content>
+      <ion-accordion-group>
+        <ygo-accordion-historico *ngFor="let historico of listHistoricoTorneios" [historico]="historico">
+        </ygo-accordion-historico>
+      </ion-accordion-group>
+    </ion-card-content>
+  </ion-card>
+  <ion-card *ngIf="listHistoricoTorneios.length == 0">
+    <ion-card-header class="text-center">
+      <ion-card-title>Não há histórico dos seus torneios!</ion-card-title>
+    </ion-card-header>
+  </ion-card>
+</ion-content>
