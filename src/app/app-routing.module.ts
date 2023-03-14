@@ -51,23 +51,8 @@ const routes: Routes = [
     canActivate: [LoginGuard]
   },
   {
-    path: 'realizar-inscricao',
-    component: RealizarInscricaoPage,
-    canActivate: [LoginGuard]
-  },
-  {
     path: 'criar-torneio',
     component: CriarTorneioPage,
-    canActivate: [LoginGuard]
-  },
-  {
-    path: 'rodadas',
-    component: RodadasPage,
-    canActivate: [LoginGuard]
-  },
-  {
-    path: 'final-torneio',
-    component: FinalTorneioPage,
     canActivate: [LoginGuard]
   },
   {
