@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 
 @Component({
-  selector: 'ygo-accordion-notificacao',
+  selector: 'app-ygo-accordion-notificacao',
   templateUrl: './accordion-notificacao.component.html',
   styleUrls: ['./accordion-notificacao.component.scss'],
 })

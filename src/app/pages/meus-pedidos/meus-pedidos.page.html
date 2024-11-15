@@ -1,0 +1,36 @@
+<app-ygo-header-component [title]="'Meus Pedidos'"></app-ygo-header-component>
+
+<ion-content>
+  <ion-col size="12" *ngFor="let pedido of listaMeusPedidos">
+    <ion-card button class="no-margin-top">
+      <ion-card-header>
+        <ion-card-title class="card-title">{{ pedido.produto.nome }}</ion-card-title>
+      </ion-card-header>
+      <ion-card-content *ngIf="isPedidoEmAndamento(pedido)">
+        <ion-card-subtitle>Seu pedido vai estar pronto aproximadamente as</ion-card-subtitle>
+        <div class="flex">
+          <ion-icon name="alarm-outline" class="icon-alarm-outline"></ion-icon>
+          {{ calcularPrazoDoPedido(pedido) | date: 'hh:mm' }}
+        </div>
+      </ion-card-content>
+      <ion-card-content *ngIf="isPedidoCancelado(pedido)">
+        <ion-card-subtitle>Pedido cancelado!</ion-card-subtitle>
+        <ion-card-subtitle>Sentimos muito caso algo não tiver te agradado 😭😭</ion-card-subtitle>
+      </ion-card-content>
+      <ion-card-content *ngIf="isPedidoPronto(pedido)">
+        <ion-card-subtitle>Pedido pronto para retirada no balcão!</ion-card-subtitle>
+        <ion-card-subtitle>Bom Apetite! 😋😋</ion-card-subtitle>
+      </ion-card-content>
+      <ion-card-content *ngIf="isPedidoFinalizado(pedido)">
+        <ion-card-subtitle>Pedido finalizado!</ion-card-subtitle>
+        <ion-card-subtitle>Que tal pedir mais um? 😏😏</ion-card-subtitle>
+      </ion-card-content>
+      <div class="valor-produto" [ngClass]="getClassePorStatusDoPedido(pedido)"><strong>{{ getLabelPorStatusDoPedido(pedido) }}</strong></div>
+    </ion-card>
+  </ion-col>
+  <ion-card *ngIf="!listaMeusPedidos.length">
+    <ion-card-header class="text-center">
+      <ion-card-title>Opa, ainda não tem nenhum pedido na fila, que tal pedir um lanche?</ion-card-title>
+    </ion-card-header>
+  </ion-card>
+</ion-content>

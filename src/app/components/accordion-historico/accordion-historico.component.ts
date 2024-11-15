@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 
 @Component({
-  selector: 'ygo-accordion-historico',
+  selector: 'app-ygo-accordion-historico',
   templateUrl: './accordion-historico.component.html',
   styleUrls: ['./accordion-historico.component.scss'],
 })

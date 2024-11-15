@@ -1,11 +1,12 @@
 import { Component, Input } from '@angular/core';
+import { GenericClass } from 'src/app/model/generic.class';
 
 @Component({
-  selector: 'ygo-menu-card',
+  selector: 'app-ygo-menu-card',
   templateUrl: './menu-card.component.html',
   styleUrls: ['./menu-card.component.scss'],
 })
-export class MenuCardComponent {
+export class MenuCardComponent extends GenericClass {
 
   @Input()
   public content: any;
@@ -17,7 +18,7 @@ export class MenuCardComponent {
   public label: string;
 
   @Input()
-  public color: string = "blue";
+  public color = 'blue';
 
   @Input()
   public margin: any;

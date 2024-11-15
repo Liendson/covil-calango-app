@@ -1,33 +1,10 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import { JogadorDTO } from '../model/jogador.dto';
+import { AbstractGenericClass } from './generic.service';
 
-@Injectable({
-  providedIn: 'root'
-})
-export class JogadorService {
+@Injectable({ providedIn: 'root' })
+export class JogadorService extends AbstractGenericClass {
 
-  private urlController = `${environment.url}/api/jogador`;
-
-  constructor(public httpClient: HttpClient) { }
-
-  save(body: JogadorDTO) {
-    return body.id
-      ? this.httpClient.put(`${this.urlController}`, body)
-      : this.httpClient.post(`${this.urlController}`, body);
-  }
-
-  delete(id: number) {
-    return this.httpClient.delete(`${this.urlController}/${id}`);
-  }
-
-  getAll() {
-    return this.httpClient.get(`${this.urlController}`);
-  }
-
-  getById(id: number) {
-    return this.httpClient.get(`${this.urlController}/${id}`);
-  }
+  override urlController = `${environment.url}/api/jogador`;
 
 }

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { JogadorDTO } from './model/jogador.dto';
+import { KEY_USUARIO, StorageService } from './services/storage.service';
 
 @Component({
   selector: 'app-root',
@@ -8,14 +9,10 @@ import { JogadorDTO } from './model/jogador.dto';
 })
 export class AppComponent {
 
-  constructor() { }
+  public usuario: JogadorDTO;
 
-  public static usuario: JogadorDTO = {
-    id: 1,
-    nome: 'Liendson',
-    pontos: 10240,
-    tcgId: '1',
-    tipoJogo: 1,
+  constructor(private storageService: StorageService) {
+    this.usuario = this.storageService.get(KEY_USUARIO);
   }
 
 }

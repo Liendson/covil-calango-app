@@ -1,0 +1,32 @@
+ion-content{
+  --ion-background-color:var(--ion-color-primary);
+}
+
+.outline {
+  --padding-end: 20px;
+}
+
+.fixed {
+  position: fixed;
+}
+
+.logo-covil {
+  border-radius: 4em;
+  margin-left: auto;
+  margin-right: auto;
+  top: 20%;
+  left: -50%;
+  right: -50%;
+  width: 60%;
+  box-shadow: #44c928 2px 2px 5em -3em;
+}
+
+.buttons {
+  border-radius: 4em;
+  bottom: 15%;
+  left: -50%;
+  right: -50%;
+  ion-button {
+    box-shadow: #44c928 2px 2px 5em -3em;
+  }
+}

@@ -11,8 +11,10 @@ ion-card {
       color: var(--ion-color-light);
     }
     ion-icon {
+      &.has-label {
+        margin: 0 2rem 0 0;
+      }
       font-size: 3em;
-      margin: 0 2rem 0 0;
     }
     ion-card-title {
       &:not(.header) {
@@ -20,4 +22,11 @@ ion-card {
       }
     }
   }
+}
+
+ion-card-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 }

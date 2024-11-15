@@ -1,16 +1,60 @@
-import { Component, OnInit } from '@angular/core';
-import { RankingEnum } from 'src/app/utils/enums/ranking.enum';
-import { GenericClass } from 'src/app/utils/generic.class';
+import { Component, Injector } from '@angular/core';
+import { RankingEnum } from 'src/app/enums/ranking.enum';
+import { GenericClass } from 'src/app/model/generic.class';
+import { ModalEditarPerfilPage } from './modal-editar-perfil/modal-editar-perfil.page';
+import { ModalInformacoesPage } from './modal-informacoes/modal-informacoes.page';
+import { KEY_USUARIO, StorageService } from 'src/app/services/storage.service';
+import { JogadorDTO } from 'src/app/model/jogador.dto';
 
 @Component({
   selector: 'app-perfil',
   templateUrl: './perfil.page.html',
   styleUrls: ['./perfil.page.scss'],
 })
-export class PerfilPage extends GenericClass implements OnInit {
+export class PerfilPage extends GenericClass {
 
-  ngOnInit(): void {
+  public usuario: JogadorDTO;
 
+  constructor(public injector: Injector, private storageService: StorageService) {
+    super(injector);
+    this.usuario = this.storageService.get(KEY_USUARIO);
+  }
+
+  async openModalPerfil() {
+    (await this.modalController.create({
+      component: ModalEditarPerfilPage,
+      breakpoints: [0.5, 1],
+      initialBreakpoint: 1
+    })).present();
+  }
+
+  async openModalInformacoesLiga() {
+    // TODO: Consultar parametro de conteudo
+    (await this.modalController.create({
+      component: ModalInformacoesPage,
+      breakpoints: [0.5, 1],
+      initialBreakpoint: 0.5,
+      componentProps: {
+        title: 'Informações da Liga',
+        content: 'Adicionar aqui as regras da liga JP'
+      }
+    })).present();
+  }
+
+  async openModalInformacoesCalango() {
+    // TODO: Consultar parametro de conteudo
+    (await this.modalController.create({
+      component: ModalInformacoesPage,
+      breakpoints: [0.5, 1],
+      initialBreakpoint: 0.5,
+      componentProps: {
+        title: 'Sobre a Covil',
+        content: `
+          Somos um Card Shop, Luderia e Hamburgueria, estamos no endereço Av. Júlia Freire, 1129 - Torre, João Pessoa - PB, BR
+          Cobramos um valor de Passaporte de 20 reais, com tempo ilimitado e grátis caso participe de algum evento da loja!
+        `
+      }
+    })).present();
   }
 
   obterRankingUsuario(pontos: number) {
@@ -45,40 +89,14 @@ export class PerfilPage extends GenericClass implements OnInit {
         return RankingEnum.BRONZE2;
       case pontos >= 5:
         return RankingEnum.BRONZE3;
-      case pontos == 0:
+      case pontos === 0:
         return RankingEnum.UNRANKED;
     }
   }
 
-  // a definir
-  // top 4 = SEMANAL {
-  //   1: 100
-  //   2: 75
-  //   3: 50
-  //   4: 40
-  //   outros = +10
-  //   penultimo - 10 (se for prata +)
-  //   ultimo - 20 (se for prata +)
-  // }
-
-  // top 4 = MUNICIPAL | SNEAKPEAK {
-  //   1: 500
-  //   2: 300
-  //   3: 200
-  //   4: 100
-  //   outros = +50
-  //   penultimo - 20 (se for prata +)
-  //   ultimo - 30 (se for prata +)
-  // }
-
-  // top 4 = REGIONAL {
-  //   1: 5000
-  //   2: 3000
-  //   3: 2000
-  //   4: 1000
-  //   outros = +50
-  //   penultimo - 20 (se for prata +)
-  //   ultimo - 30 (se for prata +)
-  // }
+  sair() {
+    this.storageService.remove(KEY_USUARIO);
+    this.router.navigate(['login']);
+  }
 
 }

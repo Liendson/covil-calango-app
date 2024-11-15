@@ -1,9 +1,21 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>login</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content>
-
+  <img src="../../../assets/images/logo-covil.png" class="logo-covil fixed" alt="img-user">
+  <ion-grid class="buttons fixed">
+    <ion-row>
+      <ion-col size="12" class="text-center pt-2">
+        <ion-button color="light" fill="outline" (click)="realizarLogin()">
+          <ion-icon color="secondary" slot="start" name="log-in-outline"></ion-icon>
+          Realizar Login
+        </ion-button>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="12" class="text-center">
+        <ion-button color="light" fill="outline" (click)="gerarNumeroComanda()">
+          <ion-icon color="secondary" slot="start" name="log-in-outline"></ion-icon>
+          Gerar Número de Comanda
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>

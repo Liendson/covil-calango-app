@@ -1,4 +1,4 @@
-<ygo-header-component [title]="'Perfil'"></ygo-header-component>
+<app-ygo-header-component [title]="'Perfil'"></app-ygo-header-component>
 <div class="background"></div>
 <ion-content>
   <div class="background"></div>
@@ -14,15 +14,22 @@
           <h1>{{ usuario.nome }}</h1>
         </strong>
         <p>{{ obterRankingUsuario(usuario.pontos) }} ({{ usuario.pontos }} Pontos)</p>
-      </ion-col>
-      <ion-col size="12" class="text-center pt-1">
-        <ion-button color="primary" (click)="toRoute('/meus-torneios')" expand="block"> Meus Torneios</ion-button>
+        <p>Você possui {{ usuario.creditos | currency: 'R$' }} de créditos na Covil do Calango</p>
       </ion-col>
       <ion-col size="12" class="text-center">
-        <ion-button color="primary" (click)="toRoute('/historico')" expand="block"> Histórico de Torneios</ion-button>
+        <ion-button color="primary" (click)="openModalPerfil()" expand="block"> Alterar Dados do Perfil</ion-button>
       </ion-col>
-      <ion-col size="12" class="text-center pt-2">
-        <ion-button color="primary" disabled size="small">
+      <ion-col size="12" class="text-center">
+        <ion-button color="primary" (click)="openModalInformacoesLiga()" expand="block"> Regras da Liga JP</ion-button>
+      </ion-col>
+      <ion-col size="12" class="text-center">
+        <ion-button color="primary" (click)="openModalInformacoesCalango()" expand="block"> Sobre a Covil</ion-button>
+      </ion-col>
+      <ion-col class="align-center text-center">
+        <p>Versão 1.0.0</p>
+      </ion-col>
+      <ion-col size="12" class="text-center">
+        <ion-button color="primary" (click)="sair()" size="small">
           <ion-icon name="exit-outline"></ion-icon> Sair
         </ion-button>
       </ion-col>

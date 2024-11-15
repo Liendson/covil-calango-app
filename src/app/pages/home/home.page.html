@@ -1,29 +1,42 @@
-<ygo-header-component [title]="'Home'"></ygo-header-component>
+<app-ygo-header-component></app-ygo-header-component>
+
 <ion-content>
   <ion-grid>
     <ion-row>
       <ion-col size="12" class="text-center pt-2">
         Bem vindo, <strong>{{ usuario.nome }}!</strong>
       </ion-col>
+      <ion-col size="12" class="text-center">
+        O número da sua comanda é <strong>12</strong>
+      </ion-col>
     </ion-row>
   </ion-grid>
-  <ygo-menu-card icon="trophy" label="Criar Torneio" (click)="toRoute('/criar-torneio')"></ygo-menu-card>
-  <ygo-menu-card icon="checkmark-done-circle" label="Realizar Inscrição" (click)="toRoute('/realizar-inscricao')">
-  </ygo-menu-card>
-  <ygo-menu-card icon="podium" label="Meus Torneios" (click)="toRoute('/meus-torneios')"></ygo-menu-card>
+  <app-ygo-menu-card icon="fast-food-outline" label="Cardápio Digital" (click)="toRoute('/cardapio')"></app-ygo-menu-card>
+  <app-ygo-menu-card icon="timer-outline" label="Meus Pedidos" (click)="toRoute('/meus-pedidos')"></app-ygo-menu-card>
+  <app-ygo-menu-card icon="podium" label="Dados da Liga" (click)="toRoute('/dados-liga')"></app-ygo-menu-card>
+  <ion-row>
+    <ion-col size="6" class="text-center">
+      <app-ygo-menu-card icon="trophy-outline" (click)="toRoute('/meus-torneios')"></app-ygo-menu-card>
+    </ion-col>
+    <ion-col size="6" class="text-center">
+      <app-ygo-menu-card icon="person-outline" (click)="toRoute('/perfil')"></app-ygo-menu-card>
+    </ion-col>
+  </ion-row>
   <ion-card *ngIf="listProximosTorneios.length > 0">
-    <ion-card-header>
+    <ion-card-header class="text-center">
       <ion-card-title>Próximos Torneios</ion-card-title>
     </ion-card-header>
     <ion-card-content>
       <ion-accordion-group>
-        <ygo-accordion-torneio *ngFor="let torneio of listProximosTorneios" [torneio]="torneio"></ygo-accordion-torneio>
+        <app-ygo-accordion-torneio *ngFor="let torneio of listProximosTorneios" [torneio]="torneio"></app-ygo-accordion-torneio>
       </ion-accordion-group>
     </ion-card-content>
   </ion-card>
-  <ion-card *ngIf="listProximosTorneios.length == 0">
+  <ion-card *ngIf="!listProximosTorneios.length">
     <ion-card-header class="text-center">
       <ion-card-title>Não há torneios marcados!</ion-card-title>
     </ion-card-header>
   </ion-card>
+  
+  
 </ion-content>

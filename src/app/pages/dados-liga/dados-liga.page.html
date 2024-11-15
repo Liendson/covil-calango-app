@@ -1,0 +1,36 @@
+<app-ygo-header-component [title]="'Ranking da Liga YGO JP'"></app-ygo-header-component>
+
+<ion-content *ngIf="dadosDaLiga">
+  <ion-grid>
+    <ion-row>
+      <ion-card>
+        <ion-card-header class="text-center">
+          <ion-card-title>{{ dadosDaLiga.nome }}</ion-card-title>
+          <ion-card-subtitle class="pt-1"><span>Atualizado dia {{ dadosDaLiga.dtAtualizacao | date: 'dd/MM/yyyy' }}</span></ion-card-subtitle>
+        </ion-card-header>
+      </ion-card>
+    </ion-row>
+  </ion-grid>
+  <ion-list lines="full">
+    <ion-item *ngFor="let jogador of dadosDaLiga.listaDeParticipantes; index as i">
+      <ion-label class="flex ion-align-items-center ion-justify-content-center">
+        <ion-icon
+          name="trophy-outline"
+          class="pb-1 pt-1"
+          *ngIf="estaNoTop(jogador)"
+          [ngClass]="getClassePorPosicao(jogador)">
+        </ion-icon> {{ jogador.nome }}
+      </ion-label>
+      <ion-label class="flex ion-align-items-center ion-justify-content-center">
+        {{ jogador.pontos }} Pontos
+      </ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>
+<ion-content *ngIf="!dadosDaLiga">
+  <ion-card>
+    <ion-card-header class="text-center">
+      <ion-card-title>Não há nenhuma Liga ativa no momento!</ion-card-title>
+    </ion-card-header>
+  </ion-card>
+</ion-content>

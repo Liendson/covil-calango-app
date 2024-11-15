@@ -1,0 +1,21 @@
+<ion-content>
+  <ion-searchbar class="p-2" placeholder="Pesquisar Produtos" [debounce]="1000" (ionInput)="handleInput($event)"></ion-searchbar>
+  <ion-grid>
+    <ion-row>
+      <ion-col size="12" *ngFor="let produto of listaDeProdutosFiltrada">
+        <ion-card button class="no-margin-top">
+          <img alt="Silhouette of mountains" [attr.src]="produto.imagem" />
+          <ion-card-header>
+            <ion-card-title>{{ produto.nome }}</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <ion-card-subtitle>Ingredientes</ion-card-subtitle>
+            {{ produto.ingredientes }}
+          </ion-card-content>
+          <div class="valor-produto"><strong>{{ produto.valor | currency: 'BRL' }}</strong></div>
+          <ion-button class="m-1" expand="block" size="medium" color="primary" (click)="realizarPedido(produto)">Eu Quero!</ion-button>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
