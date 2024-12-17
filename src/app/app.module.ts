@@ -25,6 +25,8 @@ import localePt from '@angular/common/locales/pt';
 import { registerLocaleData } from '@angular/common';
 import { ModalConfirmarPedidoPage } from './pages/cardapio/modal-confirmar-pedido/modal-confirmar-pedido.page';
 import { ReactiveFormsModule } from '@angular/forms';
+import { HTTP_LOADER_INTERCEPTOR_PROVIDER } from './interceptors/http-loading.interceptor';
+import { HTTP_ERROR_INTERCEPTOR_PROVIDER } from './interceptors/http-error.interceptor';
 
 registerLocaleData(localePt);
 
@@ -60,6 +62,8 @@ registerLocaleData(localePt);
     AppRoutingModule,
   ],
   providers: [
+    HTTP_LOADER_INTERCEPTOR_PROVIDER,
+    HTTP_ERROR_INTERCEPTOR_PROVIDER,
     {
       provide: RouteReuseStrategy,
       useClass: IonicRouteStrategy
