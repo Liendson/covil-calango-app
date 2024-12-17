@@ -30,11 +30,13 @@ export class HttpErrorInterceptor implements HttpInterceptor {
   private getErrorMessage = (error: any) => {
     switch(error.status) {
       case 0:
-        return 'Não foi possível conectar ao servidor. Verifique sua conexão com a internet.';
+        return 'Não foi possível conectar ao servidor. Verifique sua conexão com a internet!';
+      case 403:
+        return 'Tem certeza que você tem permissão?';
       case 404:
-        return 'Recurso não encontrado.';
+        return 'Recurso não encontrado!';
       case 500:
-        return 'Erro interno do servidor.';
+        return 'Erro interno do servidor!';
       default:
         return error?.error?.message;
     }

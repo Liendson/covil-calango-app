@@ -24,7 +24,7 @@ export class PerfilPage extends GenericClass {
     (await this.modalController.create({
       component: ModalEditarPerfilPage,
       breakpoints: [0.5, 1],
-      initialBreakpoint: 1
+      initialBreakpoint: 0.5
     })).present();
   }
 

@@ -1,12 +1,12 @@
-export class JogadorDTO {
-  public id?: number;
-  public nome?: string;
+import { Usuario } from './usuario.dto';
+
+export class JogadorDTO extends Usuario {
   public pontos?: number;
   public creditos?: number;
   public tcgId?: string;
-  public tipoJogo?: number;
 
-  constructor(id: number, nome: string, pontos: number, creditos: number, tcgId: string) {
+  constructor(id: number, nome: string, pontos: number, creditos: number, tcgId: string, contato: number) {
+    super(id, nome, contato);
     this.id = id;
     this.nome = nome;
     this.pontos = pontos;

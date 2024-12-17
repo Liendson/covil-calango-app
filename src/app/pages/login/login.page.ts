@@ -20,13 +20,13 @@ export class LoginPage implements OnInit {
 
   realizarLogin() {
     // TODO: Remover Mock
-    this.storageService.set(KEY_USUARIO, new JogadorDTO(1, 'Liendson Douglas', 10, 150, '10321997417'));
+    this.storageService.set(KEY_USUARIO, new JogadorDTO(1, 'Liendson Douglas', 10, 150, '10321997417', 83988979149));
     this.router.navigate(['/home']);
   }
 
   gerarNumeroComanda() {
     // TODO: Remover Mock
-    this.storageService.set(KEY_USUARIO, new JogadorDTO(1, 'Liendson Douglas', 10, 150, '10321997417'));
+    this.storageService.set(KEY_USUARIO, new JogadorDTO(1, 'Liendson Douglas', 10, 150, '10321997417', 83988979149));
     this.router.navigate(['/home']);
   }
 

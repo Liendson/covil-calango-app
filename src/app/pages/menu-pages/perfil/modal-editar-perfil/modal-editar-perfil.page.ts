@@ -2,6 +2,7 @@ import { Component, Injector, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { GenericClass } from 'src/app/model/generic.class';
 import { JogadorDTO } from 'src/app/model/jogador.dto';
+import { PerfilService } from 'src/app/services/perfil.service';
 import { KEY_USUARIO, StorageService } from 'src/app/services/storage.service';
 
 @Component({
@@ -17,7 +18,8 @@ export class ModalEditarPerfilPage extends GenericClass implements OnInit {
   constructor(
     public injector: Injector,
     private formBuilder: FormBuilder,
-    private storageService: StorageService
+    private storageService: StorageService,
+    private perfilService: PerfilService
   ) {
     super(injector);
   }
@@ -30,17 +32,17 @@ export class ModalEditarPerfilPage extends GenericClass implements OnInit {
     this.usuario = this.storageService.get(KEY_USUARIO);
     this.formPerfil = this.formBuilder.group({
       nome: [this.usuario.nome, Validators.required],
-      apelido: [''],
-      contato: [''],
-      time: ['']
+      contato: [this.usuario.contato],
     });
   }
 
   async salvarPerfil() {
-    (await this.alertController.create({
-      message: 'Perfil salvo com sucesso!',
-      buttons: ['OK']
-    })).present().then(() => this.modalController.dismiss());
+    this.perfilService.save(this.formPerfil.getRawValue()).subscribe(async () =>
+      (await this.alertController.create({
+        message: 'Perfil salvo com sucesso!',
+        buttons: ['OK']
+      })).present().then(() => this.modalController.dismiss())
+    );
   }
 
 }
