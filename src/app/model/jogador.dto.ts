@@ -1,6 +1,6 @@
-import { Usuario } from './usuario.dto';
+import { UsuarioDTO } from './usuario.dto';
 
-export class JogadorDTO extends Usuario {
+export class JogadorDTO extends UsuarioDTO {
   public pontos?: number;
   public creditos?: number;
   public tcgId?: string;

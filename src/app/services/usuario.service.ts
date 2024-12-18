@@ -3,8 +3,8 @@ import { environment } from 'src/environments/environment';
 import { AbstractGenericClass } from './generic.service';
 
 @Injectable({ providedIn: 'root' })
-export class PerfilService extends AbstractGenericClass {
+export class UsuarioService extends AbstractGenericClass {
 
-  override urlController = `${environment.url}/api/perfil`;
+  override urlController = `${environment.url}/api/usuario`;
 
 }

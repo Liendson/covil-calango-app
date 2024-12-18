@@ -1,4 +1,4 @@
-export class Usuario {
+export class UsuarioDTO {
   public id?: number;
   public nome?: string;
   public contato?: number;
