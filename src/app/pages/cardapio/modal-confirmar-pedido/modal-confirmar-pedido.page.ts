@@ -1,10 +1,10 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AlertController, ModalController, ViewWillEnter } from '@ionic/angular';
 import { PedidoDTO } from 'src/app/model/pedido.dto';
 import { ProdutoDTO } from 'src/app/model/produtos.dto';
 import { PedidoService } from 'src/app/services/pedido.service';
-import { KEY_USUARIO, StorageService } from 'src/app/services/storage.service';
+import { StorageService } from 'src/app/services/storage.service';
 
 @Component({
   selector: 'app-modal-confirmar-pedido',
@@ -26,7 +26,7 @@ export class ModalConfirmarPedidoPage implements ViewWillEnter {
   ) { }
 
   get quantidade() {
-    return this.form.get('quantidade');
+    return this.form?.get('quantidade');
   }
 
   ionViewWillEnter() {
@@ -38,7 +38,7 @@ export class ModalConfirmarPedidoPage implements ViewWillEnter {
       quantidade: [1, Validators.required],
       observacao: [null],
       produto: [this.produto, Validators.required],
-      comanda: [this.storageService.get(KEY_USUARIO), Validators.required]
+      comanda: [this.storageService.getNumeroDaComanda(), Validators.required]
     });
   }
 

@@ -4,6 +4,8 @@ import { PedidoDTO } from 'src/app/model/pedido.dto';
 import { GenericClass } from 'src/app/model/generic.class';
 import { fromStatusPedidoEnumValue, StatusPedidoEnum } from 'src/app/enums/status-pedido.enum';
 import { PedidoService } from 'src/app/services/pedido.service';
+import { HttpParams } from '@angular/common/http';
+import { StorageService } from 'src/app/services/storage.service';
 
 @Component({
   selector: 'app-meus-pedidos',
@@ -16,7 +18,8 @@ export class MeusPedidosPage extends GenericClass implements ViewWillEnter {
 
   constructor(
     public injector: Injector,
-    private pedidosService: PedidoService
+    private pedidosService: PedidoService,
+    private storageService: StorageService
   ) {
     super(injector);
   }
@@ -38,10 +41,21 @@ export class MeusPedidosPage extends GenericClass implements ViewWillEnter {
   }
 
   ionViewWillEnter(): void {
-    this.pedidosService.getAll().subscribe(res => {
+    this.pedidosService.getAllByParams(this.buildParams()).subscribe(res => {
       this.listaMeusPedidos = res;
       this.ordenarPedidosPorPrioridade();
     });
+  }
+
+  buildParams() {
+    let params = new HttpParams();
+    [StatusPedidoEnum.EM_ANDAMENTO, StatusPedidoEnum.PRONTO, StatusPedidoEnum.FINALIZADO]
+      .forEach(status => (params = params.append('status', status)));
+    const localDate = new Date();
+    localDate.setHours(0, 0, 0, 0);
+    params = params.append('dataHora', localDate.toISOString());
+    params = params.append('comanda', this.storageService.getNumeroDaComanda());
+    return params;
   }
 
   ordenarPedidosPorPrioridade() {

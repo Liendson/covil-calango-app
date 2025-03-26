@@ -4,16 +4,16 @@ import { KEY_USUARIO, StorageService } from '../services/storage.service';
 import { JogadorDTO } from '../model/jogador.dto';
 
 @Injectable({ providedIn: 'root' })
-export class LoginGuard implements CanActivate {
+export class HasLoginGuard implements CanActivate {
 
   constructor(private storageService: StorageService, private router: Router) {}
 
-  canActivate(route, state) {
-    const usuario: JogadorDTO = this.storageService.get(KEY_USUARIO) as JogadorDTO;
-    if (usuario) {
-      return true;
+  canActivate() {
+    const isLoggedIn = this.storageService.get(KEY_USUARIO) as JogadorDTO;
+    if (isLoggedIn) {
+      this.router.navigate(['home']);
+      return false;
     }
-    this.router.navigate(['login']);
     return true;
   }
 

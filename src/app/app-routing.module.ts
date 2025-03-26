@@ -9,6 +9,7 @@ import { CardapioPage } from './pages/cardapio/cardapio.page';
 import { MeusTorneiosPage } from './pages/meus-torneios/meus-torneios.page';
 import { MeusPedidosPage } from './pages/meus-pedidos/meus-pedidos.page';
 import { DadosLigaPage } from './pages/dados-liga/dados-liga.page';
+import { HasLoginGuard } from './guards/has-login.guard';
 
 const routes: Routes = [
   {
@@ -53,7 +54,8 @@ const routes: Routes = [
   },
   {
     path: 'login',
-    component: LoginPage
+    component: LoginPage,
+    canActivate: [HasLoginGuard]
   },
 ];
 @NgModule({

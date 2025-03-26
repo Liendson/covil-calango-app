@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { JogadorDTO } from './model/jogador.dto';
 import { KEY_USUARIO, StorageService } from './services/storage.service';
+import packageJson from '../../package.json';
 
 @Component({
   selector: 'app-root',
@@ -13,6 +14,10 @@ export class AppComponent {
 
   constructor(private storageService: StorageService) {
     this.usuario = this.storageService.get(KEY_USUARIO);
+  }
+
+  static get version() {
+    return packageJson.version;
   }
 
 }

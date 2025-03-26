@@ -27,6 +27,8 @@ import { ModalConfirmarPedidoPage } from './pages/cardapio/modal-confirmar-pedid
 import { ReactiveFormsModule } from '@angular/forms';
 import { HTTP_LOADER_INTERCEPTOR_PROVIDER } from './interceptors/http-loading.interceptor';
 import { HTTP_ERROR_INTERCEPTOR_PROVIDER } from './interceptors/http-error.interceptor';
+import { HTTP_AUTH_INTERCEPTOR_PROVIDER } from './interceptors/http-auth.interceptor';
+import { ModalInformarNomePage } from './pages/login/modal-informar-nome/modal-informar-nome.page';
 
 registerLocaleData(localePt);
 
@@ -52,7 +54,8 @@ registerLocaleData(localePt);
     // Modais
     ModalEditarPerfilPage,
     ModalInformacoesPage,
-    ModalConfirmarPedidoPage
+    ModalConfirmarPedidoPage,
+    ModalInformarNomePage
   ],
   imports: [
     BrowserModule,
@@ -64,6 +67,7 @@ registerLocaleData(localePt);
   providers: [
     HTTP_LOADER_INTERCEPTOR_PROVIDER,
     HTTP_ERROR_INTERCEPTOR_PROVIDER,
+    HTTP_AUTH_INTERCEPTOR_PROVIDER,
     {
       provide: RouteReuseStrategy,
       useClass: IonicRouteStrategy

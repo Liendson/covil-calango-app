@@ -23,6 +23,10 @@ export class HomePage extends GenericClass implements OnInit {
     super(injector);
   }
 
+  isVisitante() {
+    return this.usuario.id === 1;
+  }
+
   ngOnInit(): void {
     this.torneioService.getAll().subscribe((torneios: TorneioDTO[]) => {
       this.listProximosTorneios = torneios;

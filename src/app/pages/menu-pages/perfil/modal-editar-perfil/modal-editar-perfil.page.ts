@@ -45,7 +45,9 @@ export class ModalEditarPerfilPage extends GenericClass implements OnInit {
         buttons: ['OK']
       })).present().then(() => {
         this.modalController.dismiss();
-        this.storageService.set(KEY_USUARIO, new JogadorDTO(1, usuario.nome, 10, 150, '10321997417', usuario.contato));
+        const jogadorLogado = this.storageService.get<JogadorDTO>(KEY_USUARIO);
+        jogadorLogado.comanda.usuario = usuario;
+        this.storageService.set(KEY_USUARIO, jogadorLogado);
       })
     );
   }

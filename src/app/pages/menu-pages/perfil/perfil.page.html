@@ -11,22 +11,23 @@
       </ion-col>
       <ion-col size="12" class="text-center">
         <strong>
-          <h1>{{ usuario.nome }}</h1>
+          <h1>Olá, {{ usuario.nome }}!</h1>
         </strong>
-        <p>{{ obterRankingUsuario(usuario.pontos) }} ({{ usuario.pontos }} Pontos)</p>
-        <p>Você possui {{ usuario.creditos | currency: 'R$' }} de créditos na Covil do Calango</p>
+        <!-- <p>{{ obterRankingUsuario(usuario.pontos) }} ({{ usuario.pontos }} Pontos)</p> -->
+        <p>Em breve, você poderá visualizar a quantidade de Calango Coins que possui aqui, além de informações e bônus adicionais!</p>
+        <!-- <p>Você possui {{ usuario.creditos | currency: 'R$' }} de créditos na Covil do Calango</p> -->
       </ion-col>
-      <ion-col size="12" class="text-center">
+      <!-- <ion-col size="12" class="text-center">
         <ion-button color="primary" (click)="openModalPerfil()" expand="block"> Alterar Dados do Perfil</ion-button>
-      </ion-col>
+      </ion-col> -->
       <ion-col size="12" class="text-center">
-        <ion-button color="primary" (click)="openModalInformacoesLiga()" expand="block"> Regras da Liga JP</ion-button>
+        <ion-button color="primary" (click)="openModalRegrasPermanencia()" expand="block"> Regras de Permanência</ion-button>
       </ion-col>
       <ion-col size="12" class="text-center">
         <ion-button color="primary" (click)="openModalInformacoesCalango()" expand="block"> Sobre a Covil</ion-button>
       </ion-col>
       <ion-col class="align-center text-center">
-        <p>Versão 1.0.0</p>
+        <p>Versão {{ version }}</p>
       </ion-col>
       <ion-col size="12" class="text-center">
         <ion-button color="primary" (click)="sair()" size="small">
