@@ -37,3 +37,5 @@ RUN npm install
 
 # Comando padrão para gerar o APK
 CMD ["ionic", "cordova", "build", "android"]
+
+# docker run --rm -v ${PWD}:/app -v ${PWD}/apk:/app/platforms/android/app/build/outputs/apk ionic-apk-builder
