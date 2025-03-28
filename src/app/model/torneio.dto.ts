@@ -1,9 +1,8 @@
 export class TorneioDTO {
   public id?: number;
-  public nomeOts?: string;
-  public nomeTorneio?: string;
-  public tierTorneio?: number;
+  public nome?: string;
+  public tier?: number;
   public premiacao?: string;
   public valorInscricao?: number;
-  public dataInicio?: Date;
+  public dataHora?: Date;
 }

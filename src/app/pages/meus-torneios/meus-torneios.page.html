@@ -3,46 +3,36 @@
 <ion-content>
   <ion-card *ngIf="listMeusTorneios.length">
     <ion-card-header class="text-center">
-      <ion-card-title>Próximos Torneios</ion-card-title>
+      <ion-card-title>Seus Torneios</ion-card-title>
     </ion-card-header>
     <ion-card-content>
       <ion-accordion-group>
         <ion-accordion *ngFor="let torneio of listMeusTorneios" [value]="torneio">
           <ion-item slot="header">
             <ion-icon name="trophy-outline"></ion-icon>
-            <ion-label>{{ torneio.nomeTorneio }}</ion-label>
+            <ion-label>{{ torneio.nome }}</ion-label>
           </ion-item>
           <div slot="content">
             <div>
               <strong>
-                <ion-icon name="home-outline"></ion-icon> Local
-              </strong>
-              <p>{{ torneio.nomeOts }}</p>
-            </div>
-            <div>
-              <strong>
                 <ion-icon name="time-outline"></ion-icon> Horário
               </strong>
-              <p>{{ torneio.dataInicio }}</p>
+              <p>{{ torneio.dataHora | date: "dd/MM/YYYY HH:mm" }}</p>
             </div>
             <div>
               <strong>
                 <ion-icon name="cash-outline"></ion-icon> Valor
               </strong>
-              <p>{{ torneio.valorInscricao }}</p>
+              <p>{{ torneio.valorInscricao | currency: "R$" }}</p>
             </div>
             <div>
               <strong>
                 <ion-icon name="ribbon-outline"></ion-icon> Premiação
               </strong>
-              <p>{{ torneio.tierTorneio }}</p>
+              <p>{{ torneio.premiacao }}</p>
             </div>
-            <ion-button color="primary" size="small">
-              <ion-icon name="checkmark-done-circle"></ion-icon> Desinscrever
-            </ion-button>
           </div>
         </ion-accordion>
-        <app-ygo-accordion-torneio></app-ygo-accordion-torneio>
       </ion-accordion-group>
     </ion-card-content>
   </ion-card>

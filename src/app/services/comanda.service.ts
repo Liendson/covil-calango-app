@@ -13,7 +13,7 @@ export class ComandaService extends AbstractGenericClass {
   }
 
   fecharComanda(numero: number | string, body?: any) {
-    return this.httpClient.post<ComandaDTO>(`${this.urlController}/fechar/${numero}`, body);
+    return this.httpClient.put<ComandaDTO>(`${this.urlController}/fechar/${numero}`, body);
   }
 
 }

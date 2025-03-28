@@ -1,21 +1,14 @@
 <ion-accordion [value]="torneio">
   <ion-item slot="header">
     <ion-icon name="trophy-outline"></ion-icon>
-    <ion-label>{{ torneio.nomeTorneio }}</ion-label>
+    <ion-label>{{ torneio.nome }}</ion-label>
   </ion-item>
   <div slot="content">
-    <ion-label>{{ torneio.nomeTorneio }}</ion-label>
-    <div class="pt-1">
-      <strong>
-        <ion-icon name="home-outline"></ion-icon> Local
-      </strong>
-      <p>{{ torneio.nomeOts }}</p>
-    </div>
     <div>
       <strong>
         <ion-icon name="time-outline"></ion-icon> Horário
       </strong>
-      <p>{{ torneio.dataInicio | date: "dd/MM/YYYY HH:mm" }}</p>
+      <p>{{ torneio.dataHora | date: "dd/MM/YYYY HH:mm" }}</p>
     </div>
     <div>
       <strong>

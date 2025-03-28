@@ -8,6 +8,7 @@ import { JogadorDTO } from 'src/app/model/jogador.dto';
 import { ComandaService } from 'src/app/services/comanda.service';
 import { ParametrosService } from 'src/app/services/parametros.service';
 import { AppComponent } from 'src/app/app.component';
+import { IonBackButtonDelegate, Platform } from '@ionic/angular';
 
 const PARAMETRO_REGRA_PERMANENCIA = 'PARAMETRO_REGRA_PERMANENCIA';
 const PARAMETRO_INFORMACOES_CALANGO = 'PARAMETRO_INFORMACOES_CALANGO';
@@ -20,14 +21,23 @@ const PARAMETRO_INFORMACOES_CALANGO = 'PARAMETRO_INFORMACOES_CALANGO';
 export class PerfilPage extends GenericClass {
 
   public usuario: JogadorDTO;
+  public modalAberto: HTMLIonModalElement;
 
   constructor(
     public injector: Injector,
     private storageService: StorageService,
     private comandaService: ComandaService,
-    private parametrosService: ParametrosService
+    private parametrosService: ParametrosService,
+    private platform: Platform
   ) {
     super(injector);
+    this.platform.backButton.subscribeWithPriority(0, async () => {
+      if (this.modalAberto) {
+        await this.modalAberto.dismiss();
+      } else {
+        window.history.back();
+      }
+    });
     this.usuario = this.storageService.get(KEY_USUARIO);
   }
 
@@ -45,7 +55,7 @@ export class PerfilPage extends GenericClass {
 
   async openModalRegrasPermanencia() {
     this.parametrosService.getByName(PARAMETRO_REGRA_PERMANENCIA).subscribe(async res => {
-      (await this.modalController.create({
+      this.modalAberto  = await this.modalController.create({
         component: ModalInformacoesPage,
         breakpoints: [0.5, 1],
         initialBreakpoint: 0.5,
@@ -53,13 +63,14 @@ export class PerfilPage extends GenericClass {
           title: 'Regras de Permanência',
           content: res.descricao
         }
-      })).present();
+      });
+      await this.modalAberto.present();
     });
   }
 
   async openModalInformacoesCalango() {
     this.parametrosService.getByName(PARAMETRO_INFORMACOES_CALANGO).subscribe(async res => {
-      (await this.modalController.create({
+      this.modalAberto = await this.modalController.create({
         component: ModalInformacoesPage,
         breakpoints: [0.5, 1],
         initialBreakpoint: 0.5,
@@ -67,7 +78,8 @@ export class PerfilPage extends GenericClass {
           title: 'Sobre a Covil',
           content: res.descricao
         }
-      })).present();
+      });
+      await this.modalAberto.present();
     });
   }
 
