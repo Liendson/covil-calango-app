@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  url: 'https://covil-calango-api.onrender.com'
+  url: 'http://localhost:8080'
 };
 
 /*
