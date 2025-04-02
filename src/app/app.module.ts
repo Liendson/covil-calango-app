@@ -61,7 +61,7 @@ registerLocaleData(localePt);
     BrowserModule,
     ReactiveFormsModule,
     HttpClientModule,
-    IonicModule.forRoot(),
+    IonicModule.forRoot({ mode: 'ios' }),
     AppRoutingModule,
   ],
   providers: [
