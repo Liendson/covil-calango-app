@@ -16,4 +16,8 @@ export class ComandaService extends AbstractGenericClass {
     return this.httpClient.put<ComandaDTO>(`${this.urlController}/fechar/${numero}`, body);
   }
 
+  getByNumero(numero: number | string) {
+    return this.httpClient.get<ComandaDTO>(`${this.urlController}/${numero}`);
+  }
+
 }
