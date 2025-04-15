@@ -28,6 +28,10 @@ export class MeusPedidosPage extends GenericClass implements ViewWillEnter {
     return (p: PedidoDTO) => p.status === StatusPedidoEnum.EM_ANDAMENTO;
   }
 
+  get isPedidoSolicitado() {
+    return (p: PedidoDTO) => p.status === StatusPedidoEnum.SOLICITADO;
+  }
+
   get isPedidoPronto() {
     return (p: PedidoDTO) => p.status === StatusPedidoEnum.PRONTO;
   }
@@ -49,8 +53,12 @@ export class MeusPedidosPage extends GenericClass implements ViewWillEnter {
 
   buildParams() {
     let params = new HttpParams();
-    [StatusPedidoEnum.EM_ANDAMENTO, StatusPedidoEnum.PRONTO, StatusPedidoEnum.FINALIZADO]
-      .forEach(status => (params = params.append('status', status)));
+    [
+      StatusPedidoEnum.SOLICITADO,
+      StatusPedidoEnum.EM_ANDAMENTO,
+      StatusPedidoEnum.PRONTO,
+      StatusPedidoEnum.FINALIZADO
+    ].forEach(status => (params = params.append('status', status)));
     const localDate = new Date();
     localDate.setHours(0, 0, 0, 0);
     params = params.append('dataHora', localDate.toISOString());
@@ -61,9 +69,10 @@ export class MeusPedidosPage extends GenericClass implements ViewWillEnter {
   ordenarPedidosPorPrioridade() {
     const statusPrioridade = {
       [StatusPedidoEnum.PRONTO]: 1,
-      [StatusPedidoEnum.EM_ANDAMENTO]: 2,
-      [StatusPedidoEnum.CANCELADO]: 3,
-      [StatusPedidoEnum.FINALIZADO]: 4
+      [StatusPedidoEnum.SOLICITADO]: 2,
+      [StatusPedidoEnum.EM_ANDAMENTO]: 3,
+      [StatusPedidoEnum.CANCELADO]: 4,
+      [StatusPedidoEnum.FINALIZADO]: 5
     };
     this.listaMeusPedidos.sort((a, b) => statusPrioridade[a.status] - statusPrioridade[b.status]);
   }
@@ -84,6 +93,7 @@ export class MeusPedidosPage extends GenericClass implements ViewWillEnter {
       case StatusPedidoEnum.FINALIZADO:
         return 'finalizado';
       case StatusPedidoEnum.EM_ANDAMENTO:
+      case StatusPedidoEnum.SOLICITADO:
         return 'em-andamento';
       case StatusPedidoEnum.PRONTO:
         return 'pronto';

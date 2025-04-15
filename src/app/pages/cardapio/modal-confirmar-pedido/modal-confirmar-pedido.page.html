@@ -8,11 +8,11 @@
 	<ion-card>
 		<ion-card-header>
       <ion-title>
-        {{ quantidade.value }}x {{ produto.nome }}
+        {{ quantidade?.value }}x {{ produto?.nome }}
       </ion-title>
     </ion-card-header>
     <ion-toolbar>
-      <ion-title>{{ (produto.valor * quantidade.value) | currency: 'BRL' }}</ion-title>
+      <ion-title>{{ (produto?.valor * quantidade?.value) | currency: 'BRL' }}</ion-title>
     </ion-toolbar>
     <form [formGroup]="form">
       <ion-item>

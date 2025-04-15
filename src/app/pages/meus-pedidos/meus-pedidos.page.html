@@ -6,7 +6,7 @@
       <ion-card-header>
         <ion-card-title class="card-title">{{ pedido.produto.nome }}</ion-card-title>
       </ion-card-header>
-      <ion-card-content *ngIf="isPedidoEmAndamento(pedido)">
+      <ion-card-content *ngIf="isPedidoEmAndamento(pedido) || isPedidoSolicitado(pedido)">
         <ion-card-subtitle>Seu pedido vai estar pronto aproximadamente as</ion-card-subtitle>
         <div class="flex">
           <ion-icon name="alarm-outline" class="icon-alarm-outline"></ion-icon>
