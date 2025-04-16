@@ -5,4 +5,5 @@ export class SolicitacaoDTO {
   public sessionId?: string;
   public nome?: string;
   public comanda?: ComandaDTO;
+  public status?: string;
 }

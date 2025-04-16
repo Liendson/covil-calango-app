@@ -10,7 +10,7 @@
         <ion-card-subtitle>Seu pedido vai estar pronto aproximadamente as</ion-card-subtitle>
         <div class="flex">
           <ion-icon name="alarm-outline" class="icon-alarm-outline"></ion-icon>
-          {{ calcularPrazoDoPedido(pedido) | date: 'hh:mm' }}
+          {{ calcularPrazoDoPedido(pedido) | date: 'HH:mm' }}
         </div>
       </ion-card-content>
       <ion-card-content *ngIf="isPedidoCancelado(pedido)">

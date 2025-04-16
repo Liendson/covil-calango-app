@@ -19,6 +19,11 @@ export class WebsocketService {
     return JSON.parse(body);
   }
 
+  /**
+   * Cria uma conexão ao WebSocket (covil-ws):
+   *
+   * @returns Retorna um Observable<string>, onde essa string é um simpSessionId, utilizada caso necessária.
+   */
   createWebSocketConnection(): Observable<string> {
     return new Observable<string>((observer) => {
       const socket = new SockJS(`${environment.url}/covil-ws`);
@@ -33,14 +38,21 @@ export class WebsocketService {
     }).pipe(take(1));
   }
 
-  getSectionId() {
-    return this.simpSessionId;
-  }
-
-  getClient() {
+  /**
+   * Obtém o stompClient da última conexão, necessária para se realizar o subscribe() nos topics.
+   *
+   * @returns CompatClient, use com subscribe para escutar retornos da api do websocket.
+   */
+  getClient(): CompatClient {
     return this.stompClient;
   }
 
+  /**
+   * Envia dados para o MessageMapping da API.
+   *
+   * @param path path da API.
+   * @param content conteudo do body.
+   */
   send(path: string, content: any) {
     this.stompClient.send(path, {}, JSON.stringify(content));
   }

@@ -8,6 +8,7 @@ import { WebsocketService } from 'src/app/services/websocket.service';
 import { ComandaDTO } from 'src/app/model/comanda.dto';
 import { SolicitacaoDTO } from 'src/app/model/solicitacao.dto';
 import { LoadingController } from '@ionic/angular';
+import { fromStatusSolicitacaoEnumValue, StatusSolicitacaoEnum } from 'src/app/enums/status-solicitacao.enum';
 
 @Component({
   selector: 'app-modal-informar-nome',
@@ -29,13 +30,7 @@ export class ModalInformarNomePage extends GenericClass implements OnInit {
     private loadingController: LoadingController
   ) {
     super(injector);
-    this.websocketService.createWebSocketConnection().subscribe(id => {
-      this.websocketService.getClient().subscribe(`/topic/comanda/${id}`, (m) => {
-        const solicitacao: SolicitacaoDTO = WebsocketService.formatResponse(m.body);
-        this.hideLoading();
-        this.comandaService.getByNumero(solicitacao.comanda.numero).subscribe(res => this.setarDadosResponse(res));
-      });
-    });
+    this.createWebSocketConnection();
   }
 
   get nome() {
@@ -52,15 +47,28 @@ export class ModalInformarNomePage extends GenericClass implements OnInit {
     });
   }
 
+  createWebSocketConnection() {
+    this.websocketService.createWebSocketConnection().subscribe(id => {
+      this.websocketService.getClient().subscribe(`/topic/comanda/${id}`, m => {
+        const solicitacao: SolicitacaoDTO = WebsocketService.formatResponse(m.body);
+        this.hideLoading();
+        if (solicitacao.status === fromStatusSolicitacaoEnumValue(StatusSolicitacaoEnum.ACEITA)) {
+          this.comandaService.getByNumero(solicitacao.comanda.numero).subscribe(res => this.setarDadosResponse(res));
+        }
+      });
+    });
+  }
+
+
   setarDadosResponse(res: ComandaDTO) {
     const jogadorDTO: JogadorDTO = new JogadorDTO(1, null, null, res.usuario, res);
     this.storageService.set(KEY_USUARIO, jogadorDTO);
-    this.modalController.dismiss();
     this.router.navigate(['/home']);
   }
 
-  async gerarNumeroComanda() {
+  gerarNumeroComanda() {
     this.websocketService.send('/app/comanda/solicitar', this.nome);
+    this.modalController.dismiss();
     this.showLoading();
   }
 

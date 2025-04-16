@@ -74,7 +74,14 @@ export class MeusPedidosPage extends GenericClass implements ViewWillEnter {
       [StatusPedidoEnum.CANCELADO]: 4,
       [StatusPedidoEnum.FINALIZADO]: 5
     };
-    this.listaMeusPedidos.sort((a, b) => statusPrioridade[a.status] - statusPrioridade[b.status]);
+    this.listaMeusPedidos.sort((a, b) => {
+      const statusA = statusPrioridade[a.status];
+      const statusB = statusPrioridade[b.status];
+      const isMesmoStatus = () => statusA === statusB;
+      const comparePorStatus = (sa: any, sb: any) => sa - sb;
+      const comparePorHora = (ha: any, hb: any) => new Date(ha).getTime() - new Date(hb).getTime();
+      return !isMesmoStatus() ? comparePorStatus(statusA, statusB) : comparePorHora(a.dataHora, b.dataHora);
+    });
   }
 
   calcularPrazoDoPedido(pedido: PedidoDTO): Date {
