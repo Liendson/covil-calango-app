@@ -53,7 +53,7 @@ export class ModalInformarNomePage extends GenericClass implements OnInit {
         const solicitacao: SolicitacaoDTO = WebsocketService.formatResponse(m.body);
         this.hideLoading();
         if (solicitacao.status === fromStatusSolicitacaoEnumValue(StatusSolicitacaoEnum.ACEITA)) {
-          this.comandaService.getByNumero(solicitacao.comanda.numero).subscribe(res => this.setarDadosResponse(res));
+          this.comandaService.gerarComanda(solicitacao.nome).subscribe(res => this.setarDadosResponse(res));
         }
       });
     });
@@ -67,7 +67,7 @@ export class ModalInformarNomePage extends GenericClass implements OnInit {
   }
 
   gerarNumeroComanda() {
-    this.websocketService.send('/app/comanda/solicitar', this.nome);
+    this.websocketService.send('/app/solicitacao/solicitar', this.nome);
     this.modalController.dismiss();
     this.showLoading();
   }
