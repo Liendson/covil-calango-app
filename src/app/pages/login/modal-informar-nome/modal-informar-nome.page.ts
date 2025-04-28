@@ -53,7 +53,7 @@ export class ModalInformarNomePage extends GenericClass implements OnInit {
         const solicitacao: SolicitacaoDTO = WebsocketService.formatResponse(m.body);
         this.hideLoading();
         if (solicitacao.status === fromStatusSolicitacaoEnumValue(StatusSolicitacaoEnum.ACEITA)) {
-          this.comandaService.gerarComanda(solicitacao.nome).subscribe(res => this.setarDadosResponse(res));
+          this.setarDadosResponse(solicitacao.comanda);
         }
       });
     });
