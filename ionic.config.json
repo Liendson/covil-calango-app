@@ -1,7 +1,8 @@
 {
-  "name": "ygo-torneios",
+  "name": "covil-do-calangos",
   "integrations": {
-    "cordova": {}
+    "cordova": {},
+    "capacitor": {}
   },
   "type": "angular"
 }

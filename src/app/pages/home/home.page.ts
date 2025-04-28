@@ -4,6 +4,7 @@ import { GenericClass } from 'src/app/model/generic.class';
 import { TorneioService } from 'src/app/services/torneio.service';
 import { KEY_USUARIO, StorageService } from 'src/app/services/storage.service';
 import { JogadorDTO } from 'src/app/model/jogador.dto';
+import { FCM_TOKEN } from 'src/app/services/push-notification.service';
 
 @Component({
   selector: 'app-home',
@@ -14,6 +15,7 @@ export class HomePage extends GenericClass implements OnInit {
 
   public listProximosTorneios: TorneioDTO[] = [];
   public usuario: JogadorDTO;
+  public token = '';
 
   constructor(
     public injector: Injector,
@@ -32,6 +34,7 @@ export class HomePage extends GenericClass implements OnInit {
       this.listProximosTorneios = torneios;
     });
     this.usuario = this.storageService.get(KEY_USUARIO) as JogadorDTO;
+    this.token = this.storageService.get(FCM_TOKEN) as any;
   }
 
 }

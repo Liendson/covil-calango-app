@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "746459776771",
+    "project_id": "covil-calango",
+    "storage_bucket": "covil-calango.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:746459776771:android:5e60b64c06df3149b9cb36",
+        "android_client_info": {
+          "package_name": "com.covil.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAkqowXLXaL0Z9wLIwZXZ_4fJJ-2m6fdSI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:746459776771:android:c9a0f07d2ba53c84b9cb36",
+        "android_client_info": {
+          "package_name": "io.ionic.starter"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAkqowXLXaL0Z9wLIwZXZ_4fJJ-2m6fdSI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -4,12 +4,15 @@
       <ion-col size="12" class="text-center pt-2">
         Bem vindo, <strong>{{ usuario.nome }}!</strong>
       </ion-col>
+      <ion-col size="12" class="text-center pt-2">
+        Seu TOKEN, <strong>{{ token }}!</strong>
+      </ion-col>
       <ion-col size="12" class="text-center">
         O número da sua comanda é <strong>{{ usuario.comanda.numero }}</strong>
       </ion-col>
     </ion-row>
   </ion-grid>
-  <app-ygo-menu-card icon="fast-food-outline" label="Cardápio Digital" (click)="toRoute('/cardapio')"></app-ygo-menu-card>
+  <app-ygo-menu-card icon="fast-food-outline" label="Cardápio" (click)="toRoute('/cardapio')"></app-ygo-menu-card>
   <app-ygo-menu-card icon="timer-outline" label="Meus Pedidos" (click)="toRoute('/meus-pedidos')"></app-ygo-menu-card>
   <app-ygo-menu-card icon="podium" label="Dados da Liga" (click)="toRoute('/dados-liga')"></app-ygo-menu-card>
   <ion-row>
