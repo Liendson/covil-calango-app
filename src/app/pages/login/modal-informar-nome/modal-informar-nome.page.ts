@@ -3,7 +3,6 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { GenericClass } from 'src/app/model/generic.class';
 import { JogadorDTO } from 'src/app/model/jogador.dto';
 import { KEY_USUARIO, StorageService } from 'src/app/services/storage.service';
-import { ComandaService } from 'src/app/services/comanda.service';
 import { WebsocketService } from 'src/app/services/websocket.service';
 import { ComandaDTO } from 'src/app/model/comanda.dto';
 import { SolicitacaoDTO } from 'src/app/model/solicitacao.dto';
@@ -26,15 +25,10 @@ export class ModalInformarNomePage extends GenericClass implements OnInit {
     private formBuilder: FormBuilder,
     private websocketService: WebsocketService,
     private storageService: StorageService,
-    private comandaService: ComandaService,
     private loadingController: LoadingController
   ) {
     super(injector);
     this.createWebSocketConnection();
-  }
-
-  get nome() {
-    return this.form.get('nome').value;
   }
 
   ngOnInit(): void {
@@ -43,7 +37,8 @@ export class ModalInformarNomePage extends GenericClass implements OnInit {
 
   configurarForm() {
     this.form = this.formBuilder.group({
-      nome: [null, [Validators.required, Validators.minLength(3)]],
+      usuario: [null, [Validators.required, Validators.minLength(3)]],
+      email: [null, [Validators.required, Validators.email]],
     });
   }
 
@@ -67,7 +62,7 @@ export class ModalInformarNomePage extends GenericClass implements OnInit {
   }
 
   gerarNumeroComanda() {
-    this.websocketService.send('/app/solicitacao/solicitar', this.nome);
+    this.websocketService.send('/app/solicitacao/solicitar', this.form.getRawValue());
     this.modalController.dismiss();
     this.showLoading();
   }
